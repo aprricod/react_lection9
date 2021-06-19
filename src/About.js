@@ -1,7 +1,10 @@
 import React from "react";
-
+import { Link } from "react-router-dom";
 const About = () => (
   <div>
+    <nav>
+      <Link to="/home">Home</Link>
+    </nav>
     <h1>About Me</h1>
     <p>
       Hi my name is <strong>Leanne Graham</strong> a.k.a Bret

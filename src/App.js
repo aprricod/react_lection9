@@ -29,11 +29,12 @@ function App() {
         <Suspense fallback={<h1>Loading...</h1>}>
           <Switch>
             <Route path="/" component={Home} exact></Route>
-            <Route path="/about" component={About}></Route>
-            <Route path="/location" component={Location}></Route>
+            <Route path="/home" component={Home} exact></Route>
+            <Route path="/about" component={About} exact></Route>
+            <Route path="/about/location" component={Location}></Route>
             <Route path="/notFound" component={NotFound}></Route>
-            <Redirect from="/404" to="/notFound" />
-            <Route component={() => <h1>Что-то не так</h1>} />
+            <Redirect from="/404" to="/notFound" strict />
+            <Route component={() => <h1>Что-то пошло не так</h1>} />
           </Switch>
         </Suspense>
       </div>
