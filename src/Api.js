@@ -4,11 +4,11 @@ const PENDING = "pending";
 const SUCCES = "succes";
 const ERROR = "error";
 
-const fetchUser = () => {
+const fetchUser = (id) => {
   console.log("fetch user...");
   return axios
 
-    .get("https://jsonplaceholder.typicode.com/users/1")
+    .get("https://jsonplaceholder.typicode.com/users" + id)
     .then((res) => res.data)
     .catch((error) => console.log(error));
 };
@@ -47,8 +47,8 @@ const wrapPromise = (promise) => {
   };
 };
 
-export const fetchData = () => {
-  const userPromise = fetchUser();
+export const fetchData = (userId) => {
+  const userPromise = fetchUser(userId);
   const postsPromise = fetchPosts();
   return { user: wrapPromise(userPromise), posts: wrapPromise(postsPromise) };
 };

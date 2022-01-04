@@ -3,6 +3,7 @@ import { fetchData } from "./Api";
 import React, { Suspense, lazy } from "react";
 
 import { BrowserRouter, Redirect, Route, Switch } from "react-router-dom";
+import ProfilePosts from "./ProfilePosts";
 
 // const ProfileDetails = lazy(() => import("./ProfileDetails"));
 // const ProfilePosts = lazy(() => import("./ProfilePosts"));
@@ -30,9 +31,22 @@ function App() {
           <Switch>
             <Route path="/" component={Home} exact></Route>
             <Route path="/home" component={Home} exact></Route>
-            <Route path="/about" component={About} exact></Route>
-            <Route path="/about/location" component={Location}></Route>
+            {/* знак ? говорит о том что параметр опциональный */}
+            {/* <Route path="/about/:id?/:name?" component={About} exact></Route> */}
+            {/* <Route
+              path="/about/:id(\d{2})/:name?"
+              component={About}
+              exact
+            ></Route> */}
+            <Route
+              path="/about/:id(\d{1})/:name?/:category?-:weight?"
+              component={About}
+              exact
+            ></Route>
+            {/* <Route path="/about" component={About} exact></Route> */}
+            <Route path="/location" component={Location}></Route>
             <Route path="/notFound" component={NotFound}></Route>
+            <Route path="/posts" component={ProfilePosts}></Route>
             <Redirect from="/404" to="/notFound" strict />
             <Route component={() => <h1>Что-то пошло не так</h1>} />
           </Switch>
